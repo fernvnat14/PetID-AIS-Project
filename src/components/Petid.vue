@@ -30,14 +30,14 @@
     <v-card-actions>
       <v-btn 
       text 
-      to="/Fromuser"
+      to="/Formuser"
       >
         <v-icon :small="true" color="yellow darken-3">mdi-account-edit</v-icon>
         <span class="mr-2 blue-grey--text text--darken-3">Edit Profile</span>
       </v-btn>
       <v-btn 
       text 
-      to="/post"
+      to="/FormPetID"
       >
         <v-icon :small="true" color="yellow darken-3">mdi-cat</v-icon>
         <span class="mr-2 blue-grey--text text--darken-3">PetID</span>

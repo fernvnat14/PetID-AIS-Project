@@ -28,12 +28,20 @@ const routes = [
     component: () => import(/* webpackChunkName: "post" */ "../views/Profile.vue")
   },
   {
-    path: "/fromuser",
-    name: "fromuser",
+    path: "/formuser",
+    name: "formuser",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "post" */ "../views/EditUserProfile.vue")
+    component: () => import(/* webpackChunkName: "post" */ "../views/vFormuser.vue")
+  },
+  {
+    path: "/formpetid",
+    name: "formpetid",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "post" */ "../views/vFormpetid.vue")
   }
 ];
 
