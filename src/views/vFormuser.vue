@@ -9,7 +9,7 @@
 import FormUser from "@/components/FormUser.vue";
 
 export default {
-  name: "fromuser",
+  name: "formuser",
   components: {
     FormUser
   }

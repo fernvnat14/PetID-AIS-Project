@@ -30,6 +30,7 @@
 
       <v-container fluid>
         <v-row>
+          <!-- PET NAME -->
           <v-col cols="12" sm="6">
             <v-text-field
               v-model="form.Pet_name"
@@ -39,6 +40,7 @@
               required
             ></v-text-field>
           </v-col>
+          <!-- PET TYPE -->
           <v-col cols="12" sm="6">
             <v-select
               v-model="form.Type"
@@ -49,6 +51,7 @@
               required
             ></v-select>
           </v-col>
+          <!-- BREED -->
           <v-col cols="12" sm="6">
             <v-text-field
               v-model="form.Breed"
@@ -58,6 +61,7 @@
               required
             ></v-text-field>
           </v-col>
+          <!-- BLOOD TYPE -->
           <v-col cols="12" sm="6">
             <v-select
               v-model="form.Blood_type"
@@ -68,6 +72,7 @@
               required
             ></v-select>
           </v-col>
+          <!-- WEIGHT -->
           <v-col cols="12" sm="6">
             <v-text-field
               v-model="form.Weight"
@@ -77,6 +82,7 @@
               suffix="kg"
             ></v-text-field>
           </v-col>
+          <!-- COLOR -->
           <v-col cols="12" sm="6">
             <v-text-field
               v-model="form.Color"
@@ -86,6 +92,7 @@
               required
             ></v-text-field>
           </v-col>
+          <!-- APPEARANCE -->
           <v-col cols="12">
             <v-text-field
               v-model="form.Appearance"
@@ -95,6 +102,7 @@
               required
             ></v-text-field>
           </v-col>
+          <!-- GENDER -->
           <v-col cols="12" sm="6">
             <v-select
               v-model="form.Gender"
@@ -105,6 +113,7 @@
               required
             ></v-select>
           </v-col>
+          <!-- BD PET -->
           <v-col cols="12" sm="6">
             <v-menu
                 v-model="menu2"
@@ -127,6 +136,7 @@
                 <v-date-picker color="yellow darken-3" v-model="form.Bd_pet" @input="menu2 = false"></v-date-picker>
             </v-menu>
           </v-col>
+          <!-- STERILIZE -->
           <v-col cols="12" sm="6">
             <v-radio-group color="yellow darken-3" v-model="form.Sterilize" row>
               <template v-slot:label>
@@ -136,101 +146,16 @@
               <v-radio color="yellow darken-3" label="No" value="No"></v-radio>
             </v-radio-group>
           </v-col>
-          <!-- <v-col cols="12" sm="6">
-            <v-select
-              v-model="form.Sterilize"
-              :items="Sterilizes"
-              :rules="rules.Sterilize"
-              color="yellow darken-3"
-              label="Sterilize"
-              required
-            ></v-select>
-          </v-col> -->
-          <!-- <v-col cols="12" sm="6">
+          <!-- MICROCHIP NO. -->
+          <v-col cols="12" sm="6">
             <v-text-field
-              v-model="form.Type"
-              :rules="rules.name"
+              v-model="form.Microchip_no"
+              :rules="rules.Microchip_no"
               color="yellow darken-3"
-              label="Type"
+              label="Microchip Number"
               required
             ></v-text-field>
           </v-col>
-          <v-col cols="12" sm="6">
-            <v-select
-              v-model="form.Gender"
-              :items="Genders"
-              :rules="rules.Gender"
-              color="yellow darken-3"
-              label="Gender"
-              required
-            ></v-select>
-          </v-col>
-          <v-col cols="12" sm="6">
-            <v-slider
-              v-model="form.age"
-              :rules="rules.age"
-              color="yellow darken-3"
-              label="Age"
-              hint="Be honest"
-              min="1"
-              max="100"
-              thumb-label
-              required
-            ></v-slider>
-          </v-col>
-          <v-col cols="12" sm="6">
-            <v-menu
-                v-model="menu2"
-                :close-on-content-click="false"
-                :nudge-right="40"
-                transition="scale-transition"
-                offset-y
-                min-width="290px"
-            >
-                <template v-slot:activator="{ on }">
-                <v-text-field
-                    v-model="form.Bd_user"
-                    label="Birthday"
-                    color="yellow darken-3"
-                    prepend-icon="mdi-cake-variant"
-                    readonly
-                    v-on="on"
-                ></v-text-field>
-                </template>
-                <v-date-picker color="yellow darken-3" v-model="form.Bd_user" @input="menu2 = false"></v-date-picker>
-            </v-menu>
-          </v-col>
-          <v-col cols="12">
-              <v-textarea
-                v-model="form.Address"
-                color="yellow darken-3"
-              >
-                <template v-slot:label>
-                  <div>
-                    Address <small>(required)</small>
-                  </div>
-                </template>
-              </v-textarea>
-          </v-col>
-          <v-col cols="12" sm="6">
-              <v-text-field
-                v-model="form.Id_card"
-                :rules="rules.Id_card"
-                color="yellow darken-3"
-                label="ID Card Number"
-                required
-              ></v-text-field>
-          </v-col>
-          <v-col cols="12" sm="6">
-              <v-text-field
-                v-model="form.Contact"
-                :rules="rules.Contact"
-                prepend-icon="mdi-phone"
-                color="yellow darken-3"
-                label="Phone Number"
-                required
-              ></v-text-field>
-          </v-col> -->
         </v-row>
       </v-container>
       <v-card-actions>
@@ -259,6 +184,8 @@
 import firebase from "firebase";
 import axios from 'axios'
 import Auth from '@/components/Auth.vue'
+import { uuid } from 'vue-uuid'
+
 export default {
     data () {
     const defaultForm = Object.freeze ({
@@ -266,23 +193,22 @@ export default {
         Pet_name: '',
         Type: '',
         Gender: '',
+        Appearance: '',
+        Breed: '',
+        Color: '',
         Bd_pet: new Date().toISOString().substr(0, 10),
-        Address: '',
+        Blood_type: '',
         Sterilize:'',
-        age: null,
-        menu2: false,
-        Id_card:'',
-        Contact:''
+        PetID: '',
+        Microchip_no:'',
+        Weight:'',
+        menu2: false
     })
     return {
       form: Object.assign({}, defaultForm),
       rules: {
-        age: [
-            val => val > 10 || `I don't believe you!`,
-        ],
         Type: [val => (val || '').length > 0 || 'This field is required'],
         name: [val => (val || '').length > 0 || 'This field is required'],
-        Id_card: [val => (val || '').length > 12 || 'Invalid ID Card Number']
       },
       Types: ['Dog','Cat','หนู Dumbo Rat','Others'],
       Sterilizes: ['Yes','No'],
@@ -290,6 +216,7 @@ export default {
       BTypes: ['A','B','AB'],
       menu2: false,
       snackbar: false,
+      uuid: uuid.v1(),
       defaultForm
     }
     },
@@ -297,13 +224,12 @@ export default {
     computed: {
         formIsValid () {
             return (
-            this.form.First_name &&
-            this.form.Last_name &&
+            this.form.Pet_name &&
+            this.form.Type &&
             this.form.Gender &&
-            this.form.age &&
-            this.form.Bd_user &&
-            this.form.Id_card &&
-            this.form.Contact 
+            this.form.Breed &&
+            this.form.Bd_pet &&
+            this.form.Blood_type
             )
         }
     },
@@ -313,11 +239,13 @@ export default {
             this.form = Object.assign({}, this.defaultForm)
             this.$refs.form.reset()
         },
+
         submit() {
             this.snackbar = true
             //this.resetForm()
             const uid = firebase.auth().currentUser.uid;
             console.log(uid)
+            console.log(this.uuid)
             axios.post('https://skilled-array-252503.appspot.com/register/pet', {
                 "UserID": uid,
                 "Appearance": this.form.Appearance,
@@ -327,7 +255,7 @@ export default {
                 "Color": this.form.Color,
                 "Gender": this.form.Gender,
                 "Microchip_no": this.form.Microchip_no,
-                "PetID": this.form.PetID,
+                "PetID": this.uuid,
                 "Pet_name": this.form.Pet_name,
                 "Sterilize": this.form.Sterilize,
                 "Type": this.form.Type,

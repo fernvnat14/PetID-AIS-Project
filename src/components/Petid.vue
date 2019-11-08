@@ -13,18 +13,16 @@
         <v-list-item-subtitle>Contact: {{item.Contact}}</v-list-item-subtitle>
       </v-list-item-content>
 
-      <v-avatar>
+      <!-- <v-avatar>
         <img
         src="https://panumat576978001.files.wordpress.com/2018/07/manny-selfie-cat-1-1.jpg?w=300"
-        alt="cat"
+        >
+      </v-avatar> -->
+      <v-avatar size="80">
+        <img
+          src="https://panumat576978001.files.wordpress.com/2018/07/manny-selfie-cat-1-1.jpg?w=300"
         >
       </v-avatar>
-      <!-- <v-list-item-avatar
-
-        tile
-        size="80"
-        color="grey"
-      ></v-list-item-avatar> -->
     </v-list-item>
 
     <v-card-actions>
@@ -37,7 +35,7 @@
       </v-btn>
       <v-btn 
       text 
-      to="/FormPetID"
+      to="/PetCard"
       >
         <v-icon :small="true" color="yellow darken-3">mdi-cat</v-icon>
         <span class="mr-2 blue-grey--text text--darken-3">PetID</span>

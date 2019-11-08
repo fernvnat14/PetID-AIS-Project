@@ -7,9 +7,11 @@ import vuetify from "./plugins/vuetify";
 import { firebaseConfig } from "../firebase.config";
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import UUID from 'vue-uuid'
 
 let app = "";
 Vue.use(VueAxios, axios)
+Vue.use(UUID)
 Vue.config.productionTip = false;
 
 // Initialize Firebase
