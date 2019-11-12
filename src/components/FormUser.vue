@@ -179,6 +179,7 @@ export default {
       Genders: ['Male','Female'],
       menu2: false,
       snackbar: false,
+      userinfo: [],
       defaultForm
     }
     },
@@ -196,18 +197,35 @@ export default {
             )
         }
     },
+    
+    mounted () {
+    const uid = firebase.auth().currentUser.uid;
+    console.log(uid)
+    axios
+      .get('https://skilled-array-252503.appspot.com/ownerinfo/userid/'+uid)
+      .then(response => {
+        this.userinfo = response.data
+        this.loading = false
+        console.log(this.userinfo)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    },
 
     methods: {
         resetForm () {
             this.form = Object.assign({}, this.defaultForm)
             this.$refs.form.reset()
         },
+
         submit() {
+          if (this.userinfo.length == 0 ) {
             this.snackbar = true
             //this.resetForm()
             const uid = firebase.auth().currentUser.uid;
-            console.log(uid)
-            console.log(this.form.First_name)
+            //console.log(uid)
+            console.log('INSERTED')
             axios.post('https://skilled-array-252503.appspot.com/register/owner', {
                 "UserID": uid,
                 "First_name": this.form.First_name,
@@ -225,6 +243,29 @@ export default {
             .catch(error => {
                 console.log(error)
             });
+          } else {
+            this.snackbar = true
+            //this.resetForm()
+            const uid = firebase.auth().currentUser.uid;
+            //console.log(uid)
+            console.log('UPDATED')
+            axios.patch('https://skilled-array-252503.appspot.com/update/owner/'+uid, {
+                "First_name": this.form.First_name,
+                "Last_name": this.form.Last_name,
+                "Gender": this.form.Gender,
+                "Bd_user": this.form.Bd_user,
+                "Address": this.form.Address,
+                "Id_card": this.form.Id_card,
+                "Contact": this.form.Contact
+            })
+            .then(response => {
+                this.owner = response.data;
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error)
+            });
+          }
         }
     }
 };

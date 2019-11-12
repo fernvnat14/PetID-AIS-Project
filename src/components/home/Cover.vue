@@ -3,7 +3,7 @@
     <v-card>
       <v-responsive :aspect-ratio="16/9">
         <v-card-text>
-          This Card
+          Coming Soon Jaa....
         </v-card-text>
       </v-responsive>
     </v-card>

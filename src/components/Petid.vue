@@ -2,8 +2,8 @@
 
   <v-card
     class="mx-auto"
-    max-width="700"
-    outlined
+    max-width="650"
+    raised
   >
     <v-list-item three-line>
       <v-list-item-content v-for="(item, index) in wholeResponse" :key="index">
@@ -39,13 +39,6 @@
       >
         <v-icon :small="true" color="yellow darken-3">mdi-cat</v-icon>
         <span class="mr-2 blue-grey--text text--darken-3">PetID</span>
-      </v-btn>
-      <v-btn 
-      text 
-      to="/post"
-      >
-        <v-icon :small="true" color="yellow darken-3">mdi-clipboard-pulse-outline</v-icon>
-        <span class="mr-2 blue-grey--text text--darken-3">Medical Records</span>
       </v-btn>
     </v-card-actions>
   </v-card>

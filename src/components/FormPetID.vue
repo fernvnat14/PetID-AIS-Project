@@ -217,6 +217,7 @@ export default {
       menu2: false,
       snackbar: false,
       uuid: uuid.v1(),
+      petinfo: [],
       defaultForm
     }
     },
@@ -234,6 +235,21 @@ export default {
         }
     },
 
+    mounted () {
+    const uid = firebase.auth().currentUser.uid;
+    console.log(uid)
+    axios
+      .get('https://skilled-array-252503.appspot.com/allpets/userid/'+uid)
+      .then(response => {
+        this.petinfo = response.data
+        this.loading = false
+        console.log(this.petinfo)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    },
+
     methods: {
         resetForm () {
             this.form = Object.assign({}, this.defaultForm)
@@ -241,11 +257,12 @@ export default {
         },
 
         submit() {
+          if (this.petinfo.length == 0) {
             this.snackbar = true
-            //this.resetForm()
             const uid = firebase.auth().currentUser.uid;
-            console.log(uid)
-            console.log(this.uuid)
+            console.log('INSERTED')
+            //console.log(uid)
+            //console.log(this.uuid)
             axios.post('https://skilled-array-252503.appspot.com/register/pet', {
                 "UserID": uid,
                 "Appearance": this.form.Appearance,
@@ -262,12 +279,41 @@ export default {
                 "Weight": this.form.Weight
             })
             .then(response => {
-                this.owner = response.data;
+                this.pet = response.data;
                 console.log(response);
             })
             .catch(error => {
                 console.log(error)
             });
+          } else {
+            this.snackbar = true
+            //this.resetForm()
+            const uid = firebase.auth().currentUser.uid;
+            const p = this.petinfo.map(pid => pid.PetID);
+            console.log(p)
+            console.log('UPDATED')
+            axios.patch('https://skilled-array-252503.appspot.com/update/petid/'+ p, {
+                "Appearance": this.form.Appearance,
+                "Bd_pet": this.form.Bd_pet,
+                "Blood_type": this.form.Blood_type,
+                "Breed": this.form.Breed,
+                "Color": this.form.Color,
+                "Gender": this.form.Gender,
+                "Microchip_no": this.form.Microchip_no,
+                "Pet_name": this.form.Pet_name,
+                "Sterilize": this.form.Sterilize,
+                "Type": this.form.Type,
+                "Weight": this.form.Weight
+            })
+            .then(response => {
+                this.pet = response.data;
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error)
+            });
+          }
+            
         }
     }
 };

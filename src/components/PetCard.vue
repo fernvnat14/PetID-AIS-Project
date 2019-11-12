@@ -3,12 +3,13 @@
   <v-card
     class="mx-auto"
     max-width="500"
-    outlined
+    raised
   >
     <v-list-item three-line>
       <v-list-item-content v-for="(item, index) in this.petinfo" :key="index">
         <div class="overline mb-4">My Pet</div>
         <v-list-item-title class="headline mb-1">Name: {{item.Pet_name}}</v-list-item-title>
+        <v-list-item-subtitle>Birthday: {{item.Bd_pet}}</v-list-item-subtitle>
         <v-list-item-subtitle>Appearance: {{item.Appearance}}</v-list-item-subtitle>
         <v-list-item-subtitle>Type: {{item.Type}}</v-list-item-subtitle>
         <v-list-item-subtitle>Breed: {{item.Breed}}</v-list-item-subtitle>
@@ -34,13 +35,51 @@
       </v-btn>
       <v-btn 
       text 
-      to="/FormPetID"
+      to="/post"
+      >
+        <v-icon :small="true" color="yellow darken-3">mdi-clipboard-pulse-outline</v-icon>
+        <span class="mr-2 blue-grey--text text--darken-3">Medical Records</span>
+      </v-btn>
+      <!-- <v-btn
+      
+        color="error"
+        @click="overlay = !overlay"
+        >
+        Show Overlay
+      </v-btn>
+
+        <v-overlay :value="overlay">
+            <v-progress-circular indeterminate size="64"></v-progress-circular>
+            <v-btn
+                icon
+                @click="overlay = false"
+            >
+                <v-img
+                    :src="qr.png"
+                    aspect-ratio="1"
+                >
+                </v-img>
+            </v-btn>
+        </v-overlay> -->
+    
+      <v-btn 
+      text 
+      @click="overlay = !overlay"
       >
         <v-icon :small="true" color="yellow darken-3">mdi-qrcode-scan</v-icon>
         <span class="mr-2 blue-grey--text text--darken-3">My QR Code</span>
       </v-btn>
+      <v-overlay :value="overlay">
+        <v-btn
+            icon
+            @click="overlay = false"
+        >
+            <v-icon>mdi-close</v-icon>
+        </v-btn>
+    </v-overlay>
     </v-card-actions>
     
+
   </v-card>
   
 </template>
@@ -48,12 +87,14 @@
 <script>
 import axios from 'axios'
 import firebase from "firebase"
-//import Auth from '@/components/Auth.vue'
+import Auth from '@/components/Auth.vue'
 export default {
   data () {
     return {
       petinfo: [],
-      loading: true
+      loading: true,
+      overlay: false,
+     
     }
   },
   mounted () {
