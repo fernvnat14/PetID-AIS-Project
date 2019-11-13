@@ -14,42 +14,37 @@ const routes = [
   {
     path: "/post",
     name: "post",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "post" */ "../views/Post.vue")
+    component: () => import("../views/Post.vue")
   },
   {
     path: "/petid",
     name: "petid",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "post" */ "../views/Profile.vue")
+    component: () => import("../views/Profile.vue")
   },
   {
     path: "/formuser",
     name: "formuser",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "post" */ "../views/vFormuser.vue")
+    component: () => import("../views/vFormuser.vue")
   },
   {
     path: "/formpetid",
     name: "formpetid",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "post" */ "../views/vFormpetid.vue")
+    component: () => import("../views/vFormpetid.vue")
   },
   {
     path: "/petcard",
     name: "petcard",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "post" */ "../views/vPetid.vue")
+    component: () => import("../views/vPetid.vue")
+  },
+  {
+    path: "/formvets",
+    name: "formvets",
+    component: () => import("../views/VFormvet.vue")
+  },
+  {
+    path: "/vetscard",
+    name: "vetscard",
+    component: () => import("../views/VVets.vue")
   }
 ];
 

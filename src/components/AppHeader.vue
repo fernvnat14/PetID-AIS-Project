@@ -24,7 +24,7 @@
       </v-btn>
       <v-btn 
       text 
-      to="/petid"
+      to="/vetscard"
       >
         <v-icon :small="true" color="yellow darken-3">mdi-hospital-box-outline</v-icon>
         <span class="mr-2 blue-grey--text text--darken-3">Veterinary</span>
