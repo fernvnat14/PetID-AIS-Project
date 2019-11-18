@@ -8,7 +8,7 @@
     <v-list-item three-line>
       <v-list-item-content v-for="(item, index) in this.vetsinfo" :key="index">
         <div class="overline mb-4">Veterinarian Information</div>
-        <v-list-item-title class="headline mb-1">Welcome, {{item.First_name}} {{item.Last_name}}</v-list-item-title>
+        <v-list-item-title class="headline mb-1">Welcome, {{item.Vet_name}} </v-list-item-title>
         <v-list-item-subtitle>Hospital: {{item.Hospital_name}}</v-list-item-subtitle>
         <v-list-item-subtitle>License No: {{item.License_no}}</v-list-item-subtitle>
         <v-list-item-subtitle>Contact: {{item.Contact}}</v-list-item-subtitle>
@@ -16,7 +16,7 @@
 
       <v-avatar size="80">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTa5I4tl8C46caeX2Z0HT0_sbzOP9vda4WkGv3CH3wJ8nXhVw0Q"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRYUfpia_99IrB8OX8jYrfeUD3_nhQu9neDV-9p1qxEo35ym19s"
         >
       </v-avatar>
     </v-list-item>
@@ -101,7 +101,7 @@ export default {
       .then(response => {
         this.vetsinfo = response.data
         this.loading = false
-        console.log(this.petinfo)
+        console.log(this.vetsinfo)
       })
       .catch(error => {
         console.log(error)

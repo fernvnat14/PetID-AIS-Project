@@ -30,25 +30,16 @@
 
       <v-container fluid>
         <v-row>
-          <v-col cols="12" sm="6">
+          <v-col cols="12">
             <v-text-field
-              v-model="form.First_name"
+              v-model="form.Vet_name"
               :rules="rules.name"
               color="yellow darken-3"
-              label="First name"
+              label="Veterinarian Name"
               required
             ></v-text-field>
           </v-col>
-          <v-col cols="12" sm="6">
-            <v-text-field
-              v-model="form.Last_name"
-              :rules="rules.name"
-              color="yellow darken-3"
-              label="Last name"
-              required
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" sm="6">
+          <v-col cols="12">
             <v-text-field
               v-model="form.Hospital_name"
               color="yellow darken-3"
@@ -56,7 +47,7 @@
               required
             ></v-text-field>
           </v-col>
-          <v-col cols="12" sm="6">
+          <v-col cols="12">
             <v-text-field
               v-model="form.License_no"
               color="yellow darken-3"
@@ -64,7 +55,7 @@
               required
             ></v-text-field>
           </v-col>
-          <v-col cols="12" sm="6">
+          <v-col cols="12">
               <v-text-field
                 v-model="form.Contact"
                 :rules="rules.Contact"
@@ -106,8 +97,7 @@ export default {
     data () {
     const defaultForm = Object.freeze ({
         UserID:'',
-        First_name: '',
-        Last_name: '',
+        Vet_name: '',
         Hospital_name: '',
         License_no:'',
         Contact:''
@@ -129,8 +119,7 @@ export default {
     computed: {
         formIsValid () {
             return (
-            this.form.First_name &&
-            this.form.Last_name &&
+            this.form.Vet_name &&
             this.form.Hospital_name &&
             this.form.License_no &&
             this.form.Contact 
@@ -146,7 +135,7 @@ export default {
       .then(response => {
         this.vetsinfo = response.data
         this.loading = false
-        console.log(this.userinfo)
+        console.log(this.vetsinfo)
       })
       .catch(error => {
         console.log(error)
@@ -168,8 +157,7 @@ export default {
             console.log('INSERTED')
             axios.post('https://skilled-array-252503.appspot.com/register/vet', {
                 "UserID": uid,
-                "First_name": this.form.First_name,
-                "Last_name": this.form.Last_name,
+                "Vet_name": this.form.Vet_name,
                 "Hospital_name": this.form.Hospital_name,
                 "License_no": this.form.License_no,
                 "Contact": this.form.Contact
@@ -188,8 +176,7 @@ export default {
             //console.log(uid)
             console.log('UPDATED')
             axios.patch('https://skilled-array-252503.appspot.com/update/vets/'+uid, {
-                "First_name": this.form.First_name,
-                "Last_name": this.form.Last_name,
+                "Vet_name": this.form.Vet_name,
                 "Hospital_name": this.form.Hospital_name,
                 "License_no": this.form.License_no,
                 "Contact": this.form.Contact

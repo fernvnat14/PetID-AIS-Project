@@ -45,6 +45,11 @@ const routes = [
     path: "/vetscard",
     name: "vetscard",
     component: () => import("../views/VVets.vue")
+  },
+  {
+    path: "/medrecs",
+    name: "medrecs",
+    component: () => import("../views/VMedical.vue")
   }
 ];
 

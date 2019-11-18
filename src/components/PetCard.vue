@@ -9,7 +9,7 @@
       <v-list-item-content v-for="(item, index) in this.petinfo" :key="index">
         <div class="overline mb-4">My Pet</div>
         <v-list-item-title class="headline mb-1">Name: {{item.Pet_name}}</v-list-item-title>
-        <v-list-item-subtitle>Birthday: {{item.Bd_pet}}</v-list-item-subtitle>
+        <v-list-item-subtitle>DOB: {{item.Bd_pet}}</v-list-item-subtitle>
         <v-list-item-subtitle>Appearance: {{item.Appearance}}</v-list-item-subtitle>
         <v-list-item-subtitle>Type: {{item.Type}}</v-list-item-subtitle>
         <v-list-item-subtitle>Breed: {{item.Breed}}</v-list-item-subtitle>
@@ -35,7 +35,7 @@
       </v-btn>
       <v-btn 
       text 
-      to="/post"
+      to="/medrecs"
       >
         <v-icon :small="true" color="yellow darken-3">mdi-clipboard-pulse-outline</v-icon>
         <span class="mr-2 blue-grey--text text--darken-3">Medical Records</span>

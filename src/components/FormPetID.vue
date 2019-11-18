@@ -36,7 +36,7 @@
               v-model="form.Pet_name"
               :rules="rules.name"
               color="yellow darken-3"
-              label="Pet name"
+              label="Pet's name"
               required
             ></v-text-field>
           </v-col>
@@ -126,7 +126,7 @@
                 <template v-slot:activator="{ on }">
                 <v-text-field
                     v-model="form.Bd_pet"
-                    label="Birthday"
+                    label="Date of birth"
                     color="yellow darken-3"
                     prepend-icon="mdi-cake-variant"
                     readonly
@@ -140,7 +140,7 @@
           <v-col cols="12" sm="6">
             <v-radio-group color="yellow darken-3" v-model="form.Sterilize" row>
               <template v-slot:label>
-                <div>Sterilized?</div>
+                <div>Sterilized</div>
               </template>
               <v-radio color="yellow darken-3" label="Yes" value="Yes"></v-radio>
               <v-radio color="yellow darken-3" label="No" value="No"></v-radio>
