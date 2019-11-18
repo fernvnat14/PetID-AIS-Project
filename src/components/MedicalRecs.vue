@@ -17,11 +17,9 @@
     </v-card-title>
 
     <v-data-table
-    v-for="(item, index) in medinfo"
-        :key="index"
       :headers="headers"
-      :items="desserts"
       :search="search"
+      :items="medinfo"
     ></v-data-table>
   </v-card>
 </template>
@@ -44,10 +42,10 @@ import { stringify } from 'querystring';
             value: 'Date',
           },
           { text: 'Description', value: 'Description' },
-          { text: 'Diagnosis', value: 'Diagnosis' },
-          { text: 'Hospital Name', value: 'Hospital' },
-          { text: 'Veterinarian', value: 'Veterinarian' },
-          { text: 'Lisense No.', value: 'License' },
+          { text: 'Diagnosis', value: 'Diagnose' },
+          { text: 'Hospital Name', value: 'Hospital_name' },
+          { text: 'Veterinarian', value: 'Vet_name' },
+          { text: 'Lisense No.', value: 'License_no' },
         ],
         desserts: [
           {
@@ -72,18 +70,21 @@ import { stringify } from 'querystring';
       .then(response => {
         this.petinfo = response.data
         this.loading = false
+        const p = this.petinfo.map(pid => pid.PetID);
+        console.log(p)
+        this.Medrec(p)
         console.log(this.petinfo)
       })
       .catch(error => {
         console.log(error)
       });
-    this.Medrec()
+    //this.Medrec(p)
     },
 
     methods: {
-        Medrec() {
+        Medrec(p) {
             const uid = firebase.auth().currentUser.uid;
-            const p = this.petinfo.map(pid => pid.PetID);
+            //const p = this.petinfo.map(pid => pid.PetID);
             console.log(p)
             axios
             .get('https://skilled-array-252503.appspot.com/allmedicals/'+p)
