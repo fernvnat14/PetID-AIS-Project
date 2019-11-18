@@ -47,16 +47,6 @@ import { stringify } from 'querystring';
           { text: 'Veterinarian', value: 'Vet_name' },
           { text: 'Lisense No.', value: 'License_no' },
         ],
-        desserts: [
-          {
-            Date: '11092019',
-            Description: 'Wellness Check',
-            Diagnosis: 'Wellness Check',
-            Hospital: 'CIE1 Vet',
-            Veterinarian: 'Dr.Sommah Narak',
-            License: '21039324839',
-          }
-        ],
         petinfo: [],
         medinfo: []
       }
