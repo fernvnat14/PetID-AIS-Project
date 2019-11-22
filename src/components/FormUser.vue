@@ -1,6 +1,17 @@
 <template>
   <div>
-    <v-card>
+    <v-card
+    class="mx-auto"
+    style="max-width: 1000px;"
+    >
+      <v-toolbar
+        color="yellow darken-3"
+        cards
+        dark
+        flat
+      >
+      <v-toolbar-title class="title font-weight-regular">Pet Owner Information</v-toolbar-title>
+      </v-toolbar>
       <v-responsive :aspect-ratio="16/9">
         <v-card-text>
         <v-container
@@ -13,7 +24,6 @@
     >
       <v-flex
         xs12
-        md8
       >
         <v-card flat>
     <v-snackbar
@@ -35,7 +45,9 @@
               v-model="form.First_name"
               :rules="rules.name"
               color="yellow darken-3"
+              prepend-icon="mdi-account"
               label="First name"
+              outlined
               required
             ></v-text-field>
           </v-col>
@@ -45,6 +57,7 @@
               :rules="rules.name"
               color="yellow darken-3"
               label="Last name"
+              outlined
               required
             ></v-text-field>
           </v-col>
@@ -54,22 +67,11 @@
               :items="Genders"
               :rules="rules.Gender"
               color="yellow darken-3"
+              prepend-icon="mdi-gender-female"
               label="Gender"
+              outlined
               required
             ></v-select>
-          </v-col>
-          <v-col cols="12" sm="6">
-            <v-slider
-              v-model="form.age"
-              :rules="rules.age"
-              color="yellow darken-3"
-              label="Age"
-              hint="Be honest"
-              min="1"
-              max="100"
-              thumb-label
-              required
-            ></v-slider>
           </v-col>
           <v-col cols="12" sm="6">
             <v-menu
@@ -86,6 +88,7 @@
                     label="Birthday"
                     color="yellow darken-3"
                     prepend-icon="mdi-cake-variant"
+                    outlined
                     readonly
                     v-on="on"
                 ></v-text-field>
@@ -97,6 +100,8 @@
               <v-textarea
                 v-model="form.Address"
                 color="yellow darken-3"
+                prepend-icon="mdi-map-marker"
+                outlined
               >
                 <template v-slot:label>
                   <div>
@@ -111,6 +116,8 @@
                 :rules="rules.Id_card"
                 color="yellow darken-3"
                 label="ID Card Number"
+                prepend-icon="mdi-account-card-details-outline"
+                outlined
                 required
               ></v-text-field>
           </v-col>
@@ -121,6 +128,7 @@
                 prepend-icon="mdi-phone"
                 color="yellow darken-3"
                 label="Phone Number"
+                outlined
                 required
               ></v-text-field>
           </v-col>
@@ -161,7 +169,6 @@ export default {
         Gender: '',
         Bd_user: new Date().toISOString().substr(0, 10),
         Address: '',
-        age: null,
         menu2: false,
         Id_card:'',
         Contact:''
@@ -169,9 +176,6 @@ export default {
     return {
       form: Object.assign({}, defaultForm),
       rules: {
-        age: [
-            val => val > 10 || `I don't believe you!`,
-        ],
         Gender: [val => (val || '').length > 0 || 'This field is required'],
         name: [val => (val || '').length > 0 || 'This field is required'],
         Id_card: [val => (val || '').length > 12 || 'Invalid ID Card Number']
@@ -190,7 +194,6 @@ export default {
             this.form.First_name &&
             this.form.Last_name &&
             this.form.Gender &&
-            this.form.age &&
             this.form.Bd_user &&
             this.form.Id_card &&
             this.form.Contact 

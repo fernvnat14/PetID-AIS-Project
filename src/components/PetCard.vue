@@ -18,9 +18,9 @@
         <v-list-item-subtitle>PetID: {{item.PetID}}</v-list-item-subtitle>
       </v-list-item-content>
 
-      <v-avatar size="80">
+      <v-avatar size="120">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR9If4Gu6PXQCRYC8q-iXEEj_cuQfyfIAuv3j8Z4hQRSCRNFzaJ"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGlrSakYL8iAJkObrrhNIPnnCygPzdRYp89NUB3Wi17IDyLWmu"
         >
       </v-avatar>
     </v-list-item>
@@ -40,51 +40,57 @@
         <v-icon :small="true" color="yellow darken-3">mdi-clipboard-pulse-outline</v-icon>
         <span class="mr-2 blue-grey--text text--darken-3">Medical Records</span>
       </v-btn>
-      <!-- <v-btn
-      
-        color="error"
-        @click="overlay = !overlay"
+      <v-dialog
+        v-model="dialog"
+        width="350"
         >
-        Show Overlay
-      </v-btn>
+        <template v-slot:activator="{ on }">
+            <v-btn
+            text
+            dark
+            v-on="on"
+            >
+                <v-icon :small="true" color="yellow darken-3">mdi-qrcode-scan</v-icon>
+                <span class="mr-2 blue-grey--text text--darken-3">My QR Code</span>
+            </v-btn>
+        </template>
 
-        <v-overlay :value="overlay">
-            <v-progress-circular indeterminate size="64"></v-progress-circular>
+        <v-card>
+            <v-card-title
+            class="yellow-darken-2--text text--white"
+            primary-title
+            >
+            My QR Code
+            </v-card-title>
+            <v-row class="mt-5" justify="center">
+                <qrcode-vue class="p-10,m-10" :value="value" :size="size" level="H"></qrcode-vue>
+            </v-row>
+
+            <v-card-actions>
+            <v-spacer></v-spacer>
             <v-btn
                 icon
-                @click="overlay = false"
+                @click="dialog = false"
             >
-                <v-img
-                    :src="qr.png"
-                    aspect-ratio="1"
-                >
-                </v-img>
+                <v-icon>mdi-close</v-icon>
             </v-btn>
-        </v-overlay> -->
-    
-      <v-btn 
+            </v-card-actions>
+        </v-card>
+        </v-dialog>
+      <!-- <v-btn 
       text 
-      @click="overlay = !overlay"
+      to="/qrcode"
       >
         <v-icon :small="true" color="yellow darken-3">mdi-qrcode-scan</v-icon>
         <span class="mr-2 blue-grey--text text--darken-3">My QR Code</span>
-      </v-btn>
-      <v-overlay :value="overlay">
-        <v-btn
-            icon
-            @click="overlay = false"
-        >
-            <v-icon>mdi-close</v-icon>
-        </v-btn>
-    </v-overlay>
+      </v-btn> -->
     </v-card-actions>
-    
-
   </v-card>
   
 </template>
 
 <script>
+import QrcodeVue from 'qrcode.vue'
 import axios from 'axios'
 import firebase from "firebase"
 import Auth from '@/components/Auth.vue'
@@ -94,9 +100,16 @@ export default {
       petinfo: [],
       loading: true,
       overlay: false,
-     
+      value: 'http://localhost:8080/PetCard',
+      size: 200,
+      dialog: false
     }
   },
+  
+  components: {
+      QrcodeVue,
+    },
+
   mounted () {
     const uid = firebase.auth().currentUser.uid;
     console.log(uid)

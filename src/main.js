@@ -8,11 +8,13 @@ import { firebaseConfig } from "../firebase.config";
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import UUID from 'vue-uuid'
+import VueQRCodeComponent from 'vue-qrcode-component'
 
 let app = "";
 Vue.use(VueAxios, axios)
 Vue.use(UUID)
-Vue.config.productionTip = false;
+Vue.config.productionTip = false; 
+Vue.component('qr-code', VueQRCodeComponent)
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

@@ -50,6 +50,16 @@ const routes = [
     path: "/medrecs",
     name: "medrecs",
     component: () => import("../views/VMedical.vue")
+  },
+  {
+    path: "/formmedrec",
+    name: "formmedrec",
+    component: () => import("../views/VFormmedrec.vue")
+  },
+  {
+    path: "/qrcode",
+    name: "qrcode",
+    component: () => import("../views/VQr.vue")
   }
 ];
 

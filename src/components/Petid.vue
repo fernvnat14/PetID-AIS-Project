@@ -2,7 +2,7 @@
 
   <v-card
     class="mx-auto"
-    max-width="650"
+    max-width="500"
     raised
   >
     <v-list-item three-line>
@@ -11,14 +11,10 @@
         <v-list-item-title class="headline mb-1">Welcome, {{item.First_name}} {{item.Last_name}}</v-list-item-title>
         <v-list-item-subtitle>Birthday: {{item.Bd_user}}</v-list-item-subtitle>
         <v-list-item-subtitle>Contact: {{item.Contact}}</v-list-item-subtitle>
+        <v-list-item-subtitle>Address: {{item.Address}}</v-list-item-subtitle>
       </v-list-item-content>
-
-      <!-- <v-avatar>
-        <img
-        src="https://panumat576978001.files.wordpress.com/2018/07/manny-selfie-cat-1-1.jpg?w=300"
-        >
-      </v-avatar> -->
-      <v-avatar size="80">
+      
+      <v-avatar size="100">
         <img
           src="https://panumat576978001.files.wordpress.com/2018/07/manny-selfie-cat-1-1.jpg?w=300"
         >

@@ -14,9 +14,9 @@
         <v-list-item-subtitle>Contact: {{item.Contact}}</v-list-item-subtitle>
       </v-list-item-content>
 
-      <v-avatar size="80">
+      <v-avatar size="100">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRYUfpia_99IrB8OX8jYrfeUD3_nhQu9neDV-9p1qxEo35ym19s"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_Et6olF9kyH-wzNjNsmy3sDbV6FfjMRzaVjjw5_eNU_j-lshgaA&s"
         >
       </v-avatar>
     </v-list-item>
@@ -31,33 +31,11 @@
       </v-btn>
       <v-btn 
       text 
-      to="/post"
+      to="/formmedrec"
       >
         <v-icon :small="true" color="yellow darken-3">mdi-clipboard-pulse-outline</v-icon>
-        <span class="mr-2 blue-grey--text text--darken-3">Medical Records</span>
+        <span class="mr-2 blue-grey--text text--darken-3">New Medical Records</span>
       </v-btn>
-      <!-- <v-btn
-      
-        color="error"
-        @click="overlay = !overlay"
-        >
-        Show Overlay
-      </v-btn>
-
-        <v-overlay :value="overlay">
-            <v-progress-circular indeterminate size="64"></v-progress-circular>
-            <v-btn
-                icon
-                @click="overlay = false"
-            >
-                <v-img
-                    :src="qr.png"
-                    aspect-ratio="1"
-                >
-                </v-img>
-            </v-btn>
-        </v-overlay> -->
-    
       <v-btn 
       text 
       @click="overlay = !overlay"
@@ -74,10 +52,7 @@
         </v-btn>
     </v-overlay>
     </v-card-actions>
-    
-
-  </v-card>
-  
+  </v-card> 
 </template>
 
 <script>
@@ -89,8 +64,7 @@ export default {
     return {
       vetsinfo: [],
       loading: true,
-      overlay: false,
-     
+      overlay: false
     }
   },
   mounted () {

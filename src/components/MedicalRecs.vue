@@ -1,7 +1,7 @@
 <template>
   <v-card
     class="mx-auto"
-    max-width="800"
+    max-width="1000"
     raised
   >
     <v-card-title>
@@ -68,13 +68,12 @@ import { stringify } from 'querystring';
       .catch(error => {
         console.log(error)
       });
-    //this.Medrec(p)
+
     },
 
     methods: {
         Medrec(p) {
             const uid = firebase.auth().currentUser.uid;
-            //const p = this.petinfo.map(pid => pid.PetID);
             console.log(p)
             axios
             .get('https://skilled-array-252503.appspot.com/allmedicals/'+p)

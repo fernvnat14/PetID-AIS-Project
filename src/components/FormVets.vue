@@ -1,6 +1,17 @@
 <template>
   <div>
-    <v-card>
+    <v-card
+    class="mx-auto"
+    style="max-width: 1000px;"
+    >
+      <v-toolbar
+        color="#FF8A80"
+        cards
+        dark
+        flat
+      >
+      <v-toolbar-title class="title font-weight-regular">Veterinarian Information</v-toolbar-title>
+      </v-toolbar>
       <v-responsive :aspect-ratio="16/9">
         <v-card-text>
         <v-container
@@ -13,7 +24,6 @@
     >
       <v-flex
         xs12
-        md8
       >
         <v-card flat>
     <v-snackbar
@@ -34,24 +44,30 @@
             <v-text-field
               v-model="form.Vet_name"
               :rules="rules.name"
-              color="yellow darken-3"
-              label="Veterinarian Name"
+              prepend-icon="mdi-account"
+              color="#FF8A80"
+              label="Veterinarian"
+              outlined
               required
             ></v-text-field>
           </v-col>
           <v-col cols="12">
             <v-text-field
               v-model="form.Hospital_name"
-              color="yellow darken-3"
+              color="#FF8A80"
               label="Hospital"
+              prepend-icon="mdi-hospital-building"
+              outlined
               required
             ></v-text-field>
           </v-col>
           <v-col cols="12">
             <v-text-field
               v-model="form.License_no"
-              color="yellow darken-3"
+              color="#FF8A80"
               label="License no."
+              prepend-icon="mdi-account-card-details-outline"
+              outlined
               required
             ></v-text-field>
           </v-col>
@@ -60,8 +76,9 @@
                 v-model="form.Contact"
                 :rules="rules.Contact"
                 prepend-icon="mdi-phone"
-                color="yellow darken-3"
+                color="#FF8A80"
                 label="Contact"
+                outlined
                 required
               ></v-text-field>
           </v-col>

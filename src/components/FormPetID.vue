@@ -1,6 +1,17 @@
 <template>
   <div>
-    <v-card>
+    <v-card
+    class="mx-auto"
+    style="max-width: 1000px;"
+    >
+    <v-toolbar
+      color="#F9A7B0"
+      cards
+      dark
+      flat
+    >
+    <v-toolbar-title class="title font-weight-regular">Medical Records Form</v-toolbar-title>
+    </v-toolbar>
       <v-responsive :aspect-ratio="16/9">
         <v-card-text>
         <v-container
@@ -13,7 +24,6 @@
     >
       <v-flex
         xs12
-        md8
       >
         <v-card flat>
     <v-snackbar
@@ -35,8 +45,9 @@
             <v-text-field
               v-model="form.Pet_name"
               :rules="rules.name"
-              color="yellow darken-3"
+              color="#F9A7B0"
               label="Pet's name"
+              outlined
               required
             ></v-text-field>
           </v-col>
@@ -46,8 +57,9 @@
               v-model="form.Type"
               :items="Types"
               :rules="rules.Type"
-              color="yellow darken-3"
+              color="#F9A7B0"
               label="Type"
+              outlined
               required
             ></v-select>
           </v-col>
@@ -56,8 +68,9 @@
             <v-text-field
               v-model="form.Breed"
               :rules="rules.breed"
-              color="yellow darken-3"
+              color="#F9A7B0"
               label="Breed"
+              outlined
               required
             ></v-text-field>
           </v-col>
@@ -67,8 +80,9 @@
               v-model="form.Blood_type"
               :items="BTypes"
               :rules="rules.BType"
-              color="yellow darken-3"
+              color="#F9A7B0"
               label="Blood Type"
+              outlined
               required
             ></v-select>
           </v-col>
@@ -77,9 +91,10 @@
             <v-text-field
               v-model="form.Weight"
               :rules="rules.weight"
-              color="yellow darken-3"
+              color="#F9A7B0"
               label="Weight"
               suffix="kg"
+              outlined
             ></v-text-field>
           </v-col>
           <!-- COLOR -->
@@ -87,8 +102,9 @@
             <v-text-field
               v-model="form.Color"
               :rules="rules.color"
-              color="yellow darken-3"
+              color="#F9A7B0"
               label="Color"
+              outlined
               required
             ></v-text-field>
           </v-col>
@@ -97,8 +113,9 @@
             <v-text-field
               v-model="form.Appearance"
               :rules="rules.appearance"
-              color="yellow darken-3"
+              color="#F9A7B0"
               label="Appearance"
+              outlined
               required
             ></v-text-field>
           </v-col>
@@ -108,8 +125,9 @@
               v-model="form.Gender"
               :items="Genders"
               :rules="rules.Gender"
-              color="yellow darken-3"
+              color="#F9A7B0"
               label="Gender"
+              outlined
               required
             ></v-select>
           </v-col>
@@ -127,23 +145,24 @@
                 <v-text-field
                     v-model="form.Bd_pet"
                     label="Date of birth"
-                    color="yellow darken-3"
+                    color="#F9A7B0"
                     prepend-icon="mdi-cake-variant"
+                    outlined
                     readonly
                     v-on="on"
                 ></v-text-field>
                 </template>
-                <v-date-picker color="yellow darken-3" v-model="form.Bd_pet" @input="menu2 = false"></v-date-picker>
+                <v-date-picker color="#F9A7B0" v-model="form.Bd_pet" @input="menu2 = false"></v-date-picker>
             </v-menu>
           </v-col>
           <!-- STERILIZE -->
           <v-col cols="12" sm="6">
-            <v-radio-group color="yellow darken-3" v-model="form.Sterilize" row>
+            <v-radio-group color="#F9A7B0" v-model="form.Sterilize" row>
               <template v-slot:label>
                 <div>Sterilized</div>
               </template>
-              <v-radio color="yellow darken-3" label="Yes" value="Yes"></v-radio>
-              <v-radio color="yellow darken-3" label="No" value="No"></v-radio>
+              <v-radio color="#F9A7B0" label="Yes" value="Yes"></v-radio>
+              <v-radio color="#F9A7B0" label="No" value="No"></v-radio>
             </v-radio-group>
           </v-col>
           <!-- MICROCHIP NO. -->
@@ -151,8 +170,9 @@
             <v-text-field
               v-model="form.Microchip_no"
               :rules="rules.Microchip_no"
-              color="yellow darken-3"
+              color="#F9A7B0"
               label="Microchip Number"
+              outlined
               required
             ></v-text-field>
           </v-col>
